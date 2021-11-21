@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Seite</title>
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <nav>
+        <ul class="nav">
+            <li><a href="../">Startseite</a></li>
+            <li><a href="../media">Medien</a></li>
+            <li class="active"><a href="../projects">Projekte</a></li>
+            <li><a href="../contacts">Kontakt</a></li>
+            <li><a href="../essen">Züfälliges Esen </a></li>
+            <li><a href="../minions">Minion Lore</a></li>
+        </ul>
+    </nav>
+    <br>
+    <div class="center">
+        <h1>Projekte</h1>
+    </div>
+    <hr class="mittelhr">
+    </div>
+    <div class="welle1 center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#273036" fill-opacity="1"
+                d="M0,128L60,149.3C120,171,240,213,360,208C480,203,600,149,720,117.3C840,85,960,75,1080,74.7C1200,75,1320,85,1380,90.7L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+            </path>
+        </svg>
+        <div class="background1">
+            <br>
+            <h2>Der capybara generator</h2>
+            <br>
+            <hr class="mittelhr">
+            <pre><code class="language-javascript codeblock">
+window.onscroll = function() {
+    if ((window.innerHeight + window.pageYOffset + 2000) & gt; = document.body.offsetHeight) {
+        document.body.appendChild(document.createElement('br'));
+        document.body.appendChild(document.createElement('br'));
+        varimg = document.createElement('img');
+        img.src = "capybara.jpg";
+        img.className = "capybaracenter";
+        document.body.appendChild(img);
+}};
+</code></pre>
+            <hr class="mittelhr">
+            <h2>Der Essen Generator</h2>
+            
+            <pre><code class="language-javascript codeblock">
+            /* hier kommt das Essen */
+const button = document.getElementById(&quot;get_meal&quot;)
+const container = document.getElementById(&quot;essen&quot;)
+
+button.addEventListener(&#39;click&#39;, () =&gt; {
+    fetch(&#39;https://www.themealdb.com/api/json/v1/1/random.php&#39;)
+    .then(res =&gt; res.json())
+    .then(res =&gt; {
+    makemeals(res.meals[0]);
+    });
+});
+button.click();
+
+const makemeals = (meal) =&gt; {
+/* Automatische Tabelle der Zutaten */
+const ingredients = [];
+for (let i = 1; i &lt;= 20; i++) {
+    if (meal[`strIngredient${i}`]) {
+        ingredients.push(`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`)
+    } else {
+    break;
+    }
+}
+/* Dies holt die Dom&#228;ne des Quelle */
+let domain = meal.strSource.split(&quot;/&quot;)[2]
+
+/* HTML-Template f&#252;r das Essen */
+const newInnerHTML = `
+    &lt;div&gt;
+    &lt;table&gt;
+    &lt;tr&gt;
+    &lt;div&gt;
+    &lt;td class=&quot;EssenTabelleLBreite contentEssen&quot;&gt;
+    &lt;img class=&quot;EssenBild&quot; src=&quot;${meal.strMealThumb}&quot; width=&quot;100%&quot; alt=&quot;Bild von
+    ${meal.strMeal}&quot; title=&quot;${meal.strMeal}&quot;&gt;
+    &lt;/td&gt;
+    &lt;td class=&quot;EssenBeschreibung&quot;&gt;
+    &lt;h4&gt;Name: ${meal.strMeal}&lt;/h4&gt;
+    ${meal.strCategory ? `&lt;p&gt;&lt;strong&gt;Kategorie:&lt;/strong&gt; ${meal.strCategory}&lt;/p&gt;` : &#39;&#39;}
+    ${meal.strArea ? `&lt;p&gt;&lt;strong&gt;Herkunft:&lt;/strong&gt; ${meal.strArea}&lt;/p&gt;` : &#39;&#39;}
+    ${meal.strTags ? `&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; ${meal.strTags.split(&#39;,&#39;).join(&#39;,
+    &#39;)}&lt;/p&gt;` : &#39;&#39;}
+    ${meal.strSource ? `&lt;p&gt;&lt;strong&gt;Quelle: &lt;/strong&gt;&lt;a
+    href=&quot;${meal.strSource}&quot;&gt;${domain}&lt;/a&gt;&lt;/p&gt;` : &#39;&#39;}
+    &lt;h4&gt;Zutaten:&lt;/h4&gt;
+    &lt;ul&gt;
+    ${ingredients.map(ingredient =&gt; `&lt;li&gt;${ingredient}&lt;/li&gt;`).join(&#39;&#39;)}
+    &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+    &lt;details open=&quot;true&quot;&gt;
+    &lt;summary&gt;Anleitung:&lt;/summary&gt;
+    &lt;p&gt;${meal.strInstructions}&lt;/p&gt;
+    &lt;/details&gt;
+    &lt;/div&gt;
+    &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;/div&gt;
+`;
+
+container.innerHTML = newInnerHTML;
+}
+            </code></pre>
+            <hr class="mittelhr">
+            <h5>Syntax Higlighting des Programms wurde mit <a href="https://highlightjs.org/">higlight.js</a> erstellt
+            </h5>
+            <br>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#273036" fill-opacity="1"
+                d="M0,192L60,160C120,128,240,64,360,64C480,64,600,128,720,160C840,192,960,192,1080,160C1200,128,1320,64,1380,32L1440,0L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+            </path>
+        </svg>
+    </div>
+</body>
+
+</html>

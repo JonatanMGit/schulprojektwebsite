@@ -1,0 +1,178 @@
+.nav {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+  background-color: #555;
+  overflow: hidden;
+  border-radius: 10px;
+  outline: 2px solid #777;
+}
+
+.nav li,
+.nav li a {
+  float: left;
+  display: inline;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  text-decoration: none;
+}
+
+.nav li:hover,
+.nav a:hover {
+  background-color: #444;
+}
+
+.active {
+  background-color: #4caf50;
+}
+
+.active:hover,
+.active a:hover {
+  background-color: #357a38 !important;
+}
+
+.nav li:active,
+.nav li a:active {
+  background-color: #222;
+}
+
+body {
+  color: white;
+  background-color: #222;
+  font-family: "Ubuntu", sans-serif;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+.capybara {
+  max-width: 50%;
+  height: auto;
+  animation: animateImageIn 2s;
+}
+
+.capybara:hover {
+  animation: animateImageOut 2s;
+}
+@keyframes animateImageOut {
+  from {
+    transform: rotate(-0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes animateImageIn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@import url("https://fonts.googleapis+.com/css2?family=Ubuntu&display=swap");
+
+.center {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: inherit;
+}
+
+.minionkar {
+  max-width: 60px;
+}
+
+html {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.welle1 {
+  margin: -8px;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  transform-origin: bottom;
+  animation: animationwelle1 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.background1 {
+  background-color: #273036;
+  display: block;
+}
+
+.welle1 > svg {
+  display: block;
+  width: 100%;
+}
+
+@keyframes animationwelle1 {
+  0% {
+    transform: scale(1, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.codeblock {
+  text-align: left;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.mittelhr {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+pre {
+  -moz-tab-size: 1;
+  -o-tab-size: 1;
+  -webkit-tab-size: 1;
+  tab-size: 1;
+  white-space: pre;
+  word-wrap: normal;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.2em;
+}
+
+.EssenTabelleLBreite {
+  width: 35%;
+}
+
+.EssenBild {
+  border: 5px solid grey;
+}
+
+.EssenBeschreibung {
+  padding-left: 20px;
+  vertical-align: top;
+}
+
+#get_meal {
+  background-color: #4caf50;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 16px 31px;
+  text-decoration: none;
+}
+#get_meal:hover {
+  background-color: #357a38;
+}
+#get_meal:active {
+  position: relative;
+  top: 1px;
+}
