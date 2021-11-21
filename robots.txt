@@ -1,0 +1,3 @@
+User-Agent: *
+Allow: /
+Sitemap: https://jonin2.tk/sitemap.xml/
