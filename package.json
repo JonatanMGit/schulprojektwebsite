@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "reload --port 3003"
+    "dev": "reload"
   },
   "repository": {
     "type": "git",
