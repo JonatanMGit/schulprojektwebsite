@@ -60,6 +60,11 @@
     <div class="center">
         <p>Dies wäre es wieder</p>
     </div>
+
+    <script>if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function (reg) {
+            });
+        }</script>
 </body>
 
 </html>

@@ -13,7 +13,20 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    "theme_color": "#2a2a2a",
+    "background_color": "#000000",
+    "start_url": "/",
+    "display": "minimal-ui",
+    "url": "https://Jonin2.tk",
+    "scope": "/",
+    "manifestUrl": "https://Jonin2.tk/icons/site.webmanifest",
+    "lang": "de",
+    "dir": "ltr",
+    "orientation": "any",
+    "description": "Website von Jonatan",
+    "categories": [
+        "school",
+        "Personal"
+    ],
+    "id": "/"
 }

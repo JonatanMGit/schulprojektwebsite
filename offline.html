@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Die Seite</title>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+	<link rel="manifest" href="icons/site.webmanifest">
+	<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="icons/favicon.ico">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="icons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+	<meta http-equiv="refresh" content="20;URL=./">
+	<style>
+		.center {
+			text-align: center;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.mittelhr {
+			width: 80%;
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+
+		.welle1 {
+			margin: -8px;
+			position: relative;
+			color: #fff;
+			overflow: hidden;
+			transform-origin: bottom;
+			animation: animationwelle1 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+		}
+
+		.background1 {
+			background-color: #273036;
+			display: block;
+		}
+
+		.welle1>svg {
+			display: block;
+			width: 100%;
+		}
+
+		@keyframes animationwelle1 {
+			0% {
+				transform: scale(1, 0.9);
+			}
+
+			100% {
+				transform: scale(1, 1);
+			}
+		}
+
+		body {
+			color: white;
+			background-color: #222;
+			font-family: "Ubuntu", sans-serif;
+			overscroll-behavior: none;
+			overflow-x: hidden;
+		}
+		a {
+	color: inherit;
+}
+	</style>
+</head>
+
+<body>
+	<br>
+	<div class="center">
+		<h1>Wilkommen bei der der Offline Seite!</h1>
+	</div>
+	<hr class="mittelhr">
+	<div class="welle1 center">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1430 320">
+			<path fill="#273036" fill-opacity="1"
+				d="M0,160L60,160C120,160,240,160,360,149.3C480,139,600,117,720,101.3C840,85,960,75,1080,90.7C1200,107,1320,149,1380,170.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+			</path>
+		</svg>
+		<div class="background1">
+			<br>
+			<h1>Ihr Browser hat kein Internetzugang, deswegen sehen sie diese Seite!</h1>
+			<h2>Die Seite wird in 20 Sekunden sie wieder auf die Hauptseite bringen!</h2>
+			<h3>Der Offline status wird mit <a href="https://de.wikipedia.org/wiki/Service_Worker">Service Workern</a>
+				eingesehen</h3>
+			<br>
+			<br>
+		</div>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+			<path fill="#273036" fill-opacity="1"
+				d="M0,224L60,224C120,224,240,224,360,202.7C480,181,600,139,720,144C840,149,960,203,1080,208C1200,213,1320,171,1380,149.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+			</path>
+		</svg>
+	</div>
+	<div class="center">
+		<p>Dies wäre es wieder weg</p>
+	</div>
+
+</body>
+
+</html>
