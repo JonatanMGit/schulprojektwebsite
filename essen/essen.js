@@ -68,6 +68,6 @@ const makemeals = (meal) => {
 		</div>
 	`;
 
-	// Mach halt 
+	// Mach den HTML-Code in das DOM (also in das HTML-Dokument hinein)
 	container.innerHTML = newInnerHTML;
 }

@@ -52,70 +52,84 @@
             <br>
             <hr class="mittelhr">
             <pre><code class="language-javascript codeblock">
-window.onscroll = function() {
-    if ((window.innerHeight + window.pageYOffset + 2000) & gt; = document.body.offsetHeight) {
-        document.body.appendChild(document.createElement('br'));
-        document.body.appendChild(document.createElement('br'));
-        varimg = document.createElement('img');
-        img.src = "capybara.jpg";
-        img.className = "capybaracenter";
-        document.body.appendChild(img);
-}};
+//sehr guter Code, aber dies w&#228;ren sehr viele Bilder
+
+window.onscroll = function () {
+    if ((window.innerHeight + window.pageYOffset + 2000) &gt;= document.body.offsetHeight) {
+        document.body.appendChild(document.createElement(&#39;br&#39;))
+        document.body.appendChild(document.createElement(&#39;br&#39;))
+        var img = document.createElement(&#39;img&#39;)
+        img.src = &quot;capybara.jpg&quot;
+        img.className = &quot;capybara center&quot;
+        document.body.appendChild(img)
+    }
+};
 </code></pre>
             <hr class="mittelhr">
             <h2>Der Essen Generator</h2>
 
             <pre><code class="language-javascript codeblock">
-            /* hier kommt das Essen */
+/* hier kommt das Essen */
+
+/* Diese variablen holen HTML tags aus dem DOM (Document Object Model)*/
 const button = document.getElementById(&quot;get_meal&quot;)
 const container = document.getElementById(&quot;essen&quot;)
 
+/* Diese Funktion wird ausgef&#252;hrt, wenn der Button geklickt wird */
 button.addEventListener(&#39;click&#39;, () =&gt; {
+    /* Diese Funktion holen die Daten aus der MealdDB API */
     fetch(&#39;https://www.themealdb.com/api/json/v1/1/random.php&#39;)
     .then(res =&gt; res.json())
+    /* Dies Funktion packt die zur&#252;ckgegebenen Daten in ein Array */
     .then(res =&gt; {
     makemeals(res.meals[0]);
     });
 });
+/* Diese Funktion f&#252;hrt dazu, dass ein Essen direkt beim Laden der Seite angezeigt wird */
 button.click();
 
 const makemeals = (meal) =&gt; {
-/* Automatische Tabelle der Zutaten */
-const ingredients = [];
-for (let i = 1; i &lt;= 20; i++) {
+    /* Automatische Tabelle der Zutaten */
+    const ingredients = [];
+
+    /* Sollte hier nicht nach der gr&#246;&#223;e des Arrays gesucht werden? Egal*/
+    for (let i = 1; i &lt;= 20; i++) {
     if (meal[`strIngredient${i}`]) {
-        ingredients.push(`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`)
+    ingredients.push(`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`)
     } else {
     break;
     }
 }
-/* Dies holt die Dom&#228;ne des Quelle */
+/* Dies holt die Dom&#228;ne des Quelle
+Aus https://www.example.com/example.html?param=value
+wird www.example.com
+*/
 let domain = meal.strSource.split(&quot;/&quot;)[2]
 
 /* HTML-Template f&#252;r das Essen */
 const newInnerHTML = `
-    &lt;div&gt;
-    &lt;table&gt;
+&lt;table&gt;
     &lt;tr&gt;
     &lt;div&gt;
     &lt;td class=&quot;EssenTabelleLBreite contentEssen&quot;&gt;
-    &lt;img class=&quot;EssenBild&quot; src=&quot;${meal.strMealThumb}&quot; width=&quot;100%&quot; alt=&quot;Bild von
-    ${meal.strMeal}&quot; title=&quot;${meal.strMeal}&quot;&gt;
-    &lt;/td&gt;
-    &lt;td class=&quot;EssenBeschreibung&quot;&gt;
-    &lt;h4&gt;Name: ${meal.strMeal}&lt;/h4&gt;
-    ${meal.strCategory ? `&lt;p&gt;&lt;strong&gt;Kategorie:&lt;/strong&gt; ${meal.strCategory}&lt;/p&gt;` : &#39;&#39;}
-    ${meal.strArea ? `&lt;p&gt;&lt;strong&gt;Herkunft:&lt;/strong&gt; ${meal.strArea}&lt;/p&gt;` : &#39;&#39;}
-    ${meal.strTags ? `&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; ${meal.strTags.split(&#39;,&#39;).join(&#39;,
-    &#39;)}&lt;/p&gt;` : &#39;&#39;}
-    ${meal.strSource ? `&lt;p&gt;&lt;strong&gt;Quelle: &lt;/strong&gt;&lt;a
-    href=&quot;${meal.strSource}&quot;&gt;${domain}&lt;/a&gt;&lt;/p&gt;` : &#39;&#39;}
-    &lt;h4&gt;Zutaten:&lt;/h4&gt;
-    &lt;ul&gt;
-    ${ingredients.map(ingredient =&gt; `&lt;li&gt;${ingredient}&lt;/li&gt;`).join(&#39;&#39;)}
-    &lt;/ul&gt;
+        &lt;img class=&quot;EssenBild&quot; src=&quot;${meal.strMealThumb}&quot; width=&quot;100%&quot; alt=&quot;Bild von
+        ${meal.strMeal}&quot; title=&quot;${meal.strMeal}&quot;&gt;
+        &lt;/td&gt;
+        &lt;td class=&quot;EssenBeschreibung&quot;&gt;
+        &lt;h4&gt;Name: ${meal.strMeal}&lt;/h4&gt;
+        ${meal.strCategory ? `&lt;p&gt;&lt;strong&gt;Kategorie:&lt;/strong&gt; ${meal.strCategory}&lt;/p&gt;` : &#39;&#39;}
+        ${meal.strArea ? `&lt;p&gt;&lt;strong&gt;Herkunft:&lt;/strong&gt; ${meal.strArea}&lt;/p&gt;` : &#39;&#39;}
+        ${meal.strTags ? `&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; ${meal.strTags.split(&#39;,&#39;).join(&#39;,
+        &#39;)}&lt;/p&gt;` : &#39;&#39;}
+        ${meal.strSource ? `&lt;p&gt;&lt;strong&gt;Quelle: &lt;/strong&gt;&lt;a
+        href=&quot;${meal.strSource}&quot;&gt;${domain}&lt;/a&gt;&lt;/p&gt;` : &#39;&#39;}
+        &lt;h4&gt;Zutaten:&lt;/h4&gt;
+        &lt;ul&gt;
+            ${ingredients.map(ingredient =&gt; `&lt;li&gt;${ingredient}&lt;/li&gt;`).join(&#39;&#39;)}
+        &lt;/ul&gt;
     &lt;/div&gt;
     &lt;div&gt;
+        
     &lt;details open=&quot;true&quot;&gt;
     &lt;summary&gt;Anleitung:&lt;/summary&gt;
     &lt;p&gt;${meal.strInstructions}&lt;/p&gt;
@@ -124,11 +138,13 @@ const newInnerHTML = `
     &lt;/td&gt;
     &lt;/tr&gt;
     &lt;/table&gt;
-    &lt;/div&gt;
-`;
+&lt;/div&gt;
+        `;
 
+// Mach den HTML-Code in das DOM (also in das HTML-Dokument hinein)
 container.innerHTML = newInnerHTML;
 }
+
             </code></pre>
             <hr class="mittelhr">
             <h5>Syntax Higlighting des Programms wurde mit <a href="https://highlightjs.org/">higlight.js</a> erstellt
