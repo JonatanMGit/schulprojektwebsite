@@ -13,13 +13,15 @@
 	float: left;
 	display: inline;
 	color: white;
-	padding: 1em;
 	text-align: center;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
 	text-decoration: none;
+}
+.nav li a {
+	padding: 2em;
 }
 
 .nav li:hover,
