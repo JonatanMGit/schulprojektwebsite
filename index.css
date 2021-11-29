@@ -182,3 +182,19 @@ pre {
 del {
 	text-decoration: line-through;
 }
+
+.bild_404 {
+	width: 50px;
+	height: 50px;
+	background: url("davor_p.jpg") no-repeat;
+	background-size: contain;
+}
+
+.bild_404:active {
+	background: url("touch_p.jpg") no-repeat;
+	background-size: contain;
+}
+
+.klein {
+	font-size: 0.25em;
+}
